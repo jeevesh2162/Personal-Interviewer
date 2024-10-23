@@ -1,0 +1,32 @@
+.video-interface {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* background-color: rgb(255, 255, 255); */
+    height: 88%;
+    width: 66%;
+  }
+  
+  .zoom-style-video {
+    width: 100%;
+    height: 100%;
+    max-width: 800px; /* Adjust based on your design */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2); /* Add depth with multiple shadow layers */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .zoom-style-video:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+    transform: scale(1.02); /* Slight zoom effect on hover */
+  }
+  
+  /* Responsive Styles for Mobile */
+  @media (max-width: 600px) {
+    .video-style {
+      width: 100%; /* Full width for smaller screens */
+    }
+  }
+  

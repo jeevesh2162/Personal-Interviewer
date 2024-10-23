@@ -1,0 +1,132 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+#nav-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease-in-out;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  padding: 0 30px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.logo:hover a {
+  color: #ffeb3b;
+}
+
+
+.nav-link {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0 15px;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #ffeb3b;
+}
+
+.nav-link.active {
+  color: #ffeb3b;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffeb3b;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.btn-nav {
+  display: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fas.fa-bars {
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .btn-nav {
+    display: block;
+  }
+
+  .nav.right {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+  }
+
+  #nav-wrapper.nav-visible .nav.right {
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    padding: 15px 0;
+    font-size: 1.5rem;
+  }
+
+  .nav-link:hover {
+    color: #e52e71;
+  }
+
+  .nav-link::after {
+    background: #e52e71;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
