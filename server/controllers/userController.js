@@ -72,14 +72,15 @@ const loginUser = async (req, res) => {
       await user.save(); // Save the user with nullified token
     }
 
+
     // Create a new JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
       expiresIn: "1h", // Token expires in 1 hour
     });
 
-    // Save the token to the user's record in the database
-    // user.token = token;
-    // await user.save();
+    console.log(token);
+
+    
 
     // Send the new token as the response
     res.json({ body: token });
@@ -92,27 +93,39 @@ const loginUser = async (req, res) => {
 
 
 // for question answers fetch
-// const resultPage = async (req, res) => {
-//   try {
-//     const topic = await Topic.findOne({ topic: req.params.topic });
-//     if (topic) {
-//       res.json(topic.questions);
-//     } else {
-//       console.log();
-//       res.status(404).json({ message: "Topic not found" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
+const resultPage = async (req, res) => {
+  try { 
+    // Get the user ID or username from the request (assuming it's in req.params or req.query)
+    const user = req.email;
+
+    // Check if user parameter is provided
+    if (!user) {
+      return res.status(400).json({ message: "User parameter is required" });
+    }
+
+    // Fetch all topics and their corresponding interview data for the specified user
+    const userInterviews = await Interview.find({ user }, 'topic interviewData'); // Filter by user and select only topic and interviewData
+
+    // Check if there are any topics for the specified user
+    if (userInterviews.length > 0) {
+      res.json(userInterviews);
+    } else {
+      res.status(404).json({ message: "No topics found for the specified user" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 
 
 
 
 const chat = async (req, res) => {
-  const { user, topic, interviewData } = req.body;
-
+  const { topic, interviewData } = req.body;
+console.log(topic, interviewData);
+const user =req.email;
   try {
     // Determine whether interviewData is an array or not
     const updateOperation = Array.isArray(interviewData)
@@ -202,4 +215,5 @@ module.exports = {
   loginUser,
   chat,
   gemini,
+  resultPage,
 };

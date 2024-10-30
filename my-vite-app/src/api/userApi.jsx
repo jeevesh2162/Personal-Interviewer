@@ -25,9 +25,9 @@ export const loginUser = async (userData) => {
   }
 };
 
-export const fetchQuestions = async (topic) => {
+export const results = async (token_user) => {
   try {
-    const response = await axios.get(`${API_URL}/questions`); // Call backend API
+    const response = await axios.get(`${API_URL}/results`,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser")).body}}); // Call backend API
     // const response = await axios.get(`${API_URL}/questions/${topic}`); // Call backend API
     // console.log(response.data);
     return response.data; // Return the array of questions

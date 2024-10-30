@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+// const {protect} = require("./middleware/authMiddleware");
 
 const cookieParser = require("cookie-parser");
 require('dotenv').config();
@@ -20,7 +21,7 @@ app.use(cors({
 }));
 
 // Use the user routes
-app.use('/api/users', userRoutes);
+app.use('/api/users',userRoutes);
 
 const PORT = process.env.PORT || 5000;
 

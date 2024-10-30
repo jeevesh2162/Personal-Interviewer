@@ -1,7 +1,11 @@
 import React from 'react';
+import {results} from '../api/userApi.jsx';
+
 import './results.css';
 
 export const Results = () => {
+
+  const result = new results(JSON.stringify(localStorage.getItem("loggedinuser")));
   const topics = ["React", "Node.js", "MongoDB", "JavaScript", "CSS", "HTML"];
 
   return (
