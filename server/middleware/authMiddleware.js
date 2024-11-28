@@ -31,10 +31,10 @@ require('dotenv').config(); // Ensure environment variables are loaded
 
 const protect = (req, res, next) => {
   const authHeader = req.headers['authorization'];
+  console.log(authHeader);
   const token = authHeader && authHeader.split(' ')[0];
 
   console.log("Token received:", token); // Debugging line
-  console.log(authHeader);
 
 
   if (!token) {

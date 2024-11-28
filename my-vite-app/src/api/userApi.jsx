@@ -25,10 +25,9 @@ export const loginUser = async (userData) => {
   }
 };
 
-export const results = async (token_user) => {
+export const results = async () => {
   try {
-    const response = await axios.get(`${API_URL}/results`,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser")).body}}); // Call backend API
-    // const response = await axios.get(`${API_URL}/questions/${topic}`); // Call backend API
+    const response = await axios.get(`${API_URL}/results`,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser"))}}); // Call backend API
     // console.log(response.data);
     return response.data; // Return the array of questions
   } catch (error) {
@@ -41,7 +40,7 @@ export const results = async (token_user) => {
 export const gemini = async(prompt)=>{
   try {
     console.log(prompt);
-    const response = await axios.post(`${API_URL}/gemini`,prompt); // Call backend API
+    const response = await axios.post(`${API_URL}/gemini`,prompt,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser"))}}); // Call backend API
     
     return response.data; // Return the array of questions
   } catch (error) {
@@ -54,7 +53,7 @@ export const gemini = async(prompt)=>{
 export const chat = async(prompt)=>{
   try {
     console.log(prompt);
-    const response = await axios.post(`${API_URL}/chat`,prompt,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser")).body}}); // Call backend API
+    const response = await axios.post(`${API_URL}/chat`,prompt,{headers:{"authorization":JSON.parse(localStorage.getItem("loggedinuser"))}}); // Call backend API
     
     return response.data; // Return the array of questions
   } catch (error) {

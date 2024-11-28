@@ -105,7 +105,7 @@ const resultPage = async (req, res) => {
 
     // Fetch all topics and their corresponding interview data for the specified user
     const userInterviews = await Interview.find({ user }, 'topic interviewData'); // Filter by user and select only topic and interviewData
-
+    console.log(userInterviews)
     // Check if there are any topics for the specified user
     if (userInterviews.length > 0) {
       res.json(userInterviews);

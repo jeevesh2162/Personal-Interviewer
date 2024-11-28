@@ -23,7 +23,7 @@ router.get("/results", protect, resultPage);
 router.post("/chat", protect, chat);
 
 // gemini
-router.post("/gemini", gemini);
+router.post("/gemini", protect ,gemini);
 
 // test
 router.get("/test", () => {

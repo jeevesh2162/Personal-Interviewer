@@ -391,6 +391,7 @@ export const SpeechToText = () => {
     recognition.onresult = async (event) => {
       const transcript = event.results[event.resultIndex][0].transcript.trim();
 
+      console.log(messages);
       setMessages((prev) => {
         if (prev.length > 0 && prev[prev.length - 1].type === "response") {
           const updatedMessages = [...prev];
@@ -417,6 +418,7 @@ export const SpeechToText = () => {
         topic: prompt.body,
         interviewData: { text: messages[messages.length-1], type: "response" },
       });
+      console.log(messages);
 
       if (!isInterviewActive) {
         await readOut("Your interview has ended.");

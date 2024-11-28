@@ -1,0 +1,88 @@
+/* ------------------------------ Chat Section Styling ------------------------------ */
+
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+  }
+  
+  .chat-header {
+    padding: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .chat-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chat-message {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 1.1em;
+    word-wrap: break-word;
+  }
+  
+  .chat-message.question {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-start;
+  }
+  
+  .chat-message.response {
+    background-color: #e9ecef;
+    color: black;
+    align-self: flex-end;
+  }
+  
+  .controls {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
+  }
+  
+  .controls button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  .controls button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .chat-section {
+      width: 100%;
+      height: 50vh;
+    }
+  }
+  

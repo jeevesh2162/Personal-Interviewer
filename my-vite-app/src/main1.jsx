@@ -44,7 +44,6 @@
 
 // export default App;
 
-
 import React from "react";
 import { UserProvider } from "./useContext.jsx"; // Import the UserProvider
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -56,8 +55,10 @@ import { Navbar } from "./components/navigation/Navbar.jsx";
 import { Home } from "./components/Home.jsx";
 import { Results } from "./components/Results.jsx";
 import { Signup } from "./components/Signup.jsx";
+
+import { ResultsData } from "./components/resultsData.jsx";
 import "./App.css";
- 
+
 function App() {
   return (
     <UserProvider>
@@ -80,8 +81,12 @@ function App() {
               <Route path="/text-to-voice" element={<TextToVoice />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
- 
-              <Route path="/results" element={<Results/>} />
+
+              <Route path="/results" element={<Results />} />
+              {/* <Route path="/results/resultsData" element={<ResultsData />} /> */}
+              <Route path="/" element={<Results />} />
+              {/* Dynamic route for individual topics */}
+              <Route path="/results/:id" element={<ResultsData />} />
             </Routes>
           </div>
         </div>
